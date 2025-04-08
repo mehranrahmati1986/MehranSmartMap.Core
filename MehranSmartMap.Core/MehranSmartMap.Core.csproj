@@ -6,7 +6,7 @@
     <Nullable>disable</Nullable>
     <PackageId>MehranSmartMapp.Core</PackageId>
     <Title>فریم‌ورک ساده و هوشمند برای مپینگ داده‌ها</Title>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>مهران قائدرحمت</Authors>
     <Company />
     <Description>استفاده از AutoMapper به‌صورت جنریک و هوشمند.
