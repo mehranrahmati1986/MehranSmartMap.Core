@@ -1,5 +1,5 @@
 # MehranSmartMap
-راهنما به 3 زیان انگلیسی فارسی و عربی
+راهنما به 3 زبان انگلیسی فارسی و عربی
 
 A lightweight package for automatic AutoMapper profile discovery and mapping registration in ASP.NET Core. It allows you to define mapping logic in isolated classes and register everything automatically.
 
