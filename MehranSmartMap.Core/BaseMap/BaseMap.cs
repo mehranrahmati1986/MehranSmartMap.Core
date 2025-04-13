@@ -3,7 +3,7 @@ using MehranSmartMap.Core.Infrastructure;
 
 namespace MehranSmartMap.Core.BaseMap;
 
-public abstract class BaseMap<T, Entity> : IMapDefinition
+public abstract record class BaseMap<T, Entity> : IMapDefinition
 {
     /// <summary>
     /// اگر true باشه، نگاشت دوطرفه ساخته میشه (ReverseMap)

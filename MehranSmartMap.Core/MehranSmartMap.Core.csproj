@@ -6,11 +6,10 @@
     <Nullable>disable</Nullable>
     <PackageId>MehranSmartMapp.Core</PackageId>
     <Title>فریم‌ورک ساده و هوشمند برای مپینگ داده‌ها</Title>
-    <Version>1.0.1</Version>
+    <Version>1.0.4</Version>
     <Authors>مهران قائدرحمت</Authors>
     <Company />
-    <Description>استفاده از AutoMapper به‌صورت جنریک و هوشمند.
-حذف نیاز به تعریف کلاس Profile برای هر DTO و Entity.</Description>
+    <Description>استفاده از اتومپر به‌صورت جنریک و هوشمند</Description>
     <RepositoryUrl>https://github.com/mehranrahmati1986/MehranSmartMap.Core/blob/master/README.md</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
   </PropertyGroup>

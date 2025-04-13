@@ -9,19 +9,21 @@ namespace MehranSmartMap.Core.AutoDiscovery;
 /// </summary>
 public class AutoDiscoveryProfile : Profile
 {
-    public AutoDiscoveryProfile()
+    public AutoDiscoveryProfile(Assembly[] assemblies)
     {
-        IEnumerable<Type> types = Assembly
-            .GetExecutingAssembly()
-            .GetTypes()
-            .Where(t => typeof(IMapDefinition).IsAssignableFrom(t))
-            .Where(t => t.IsAbstract)
-            .Where(t => t.IsInterface);
-
-        foreach (Type type in types)
+        foreach (var assembly in assemblies)
         {
-            IMapDefinition instance = (IMapDefinition)Activator.CreateInstance(type)!;
-            instance.ConfigureMapping(this);
+            IEnumerable<Type> types = assembly
+                .GetTypes()
+                .Where(t => typeof(IMapDefinition).IsAssignableFrom(t))
+                .Where(t => !t.IsAbstract && !t.IsInterface);
+
+            foreach (var type in types)
+            {
+                IMapDefinition instance = (IMapDefinition)Activator.CreateInstance(type)!;
+                instance.ConfigureMapping(this);
+            }
         }
     }
 }
+
