@@ -16,4 +16,4 @@ AutoMapper
 
 
 ```bash
-dotnet add package SmartMap.Core
+dotnet add package MehranSmartMap.Core
