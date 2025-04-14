@@ -36,6 +36,11 @@ builder.Services.AddMehranSmartMap(opt =>
 {
     opt.ScanAssemblies = new[] { typeof(UserMap).Assembly };
 });
+
+var app = builder.Build();
+
+// for MehranSmartMap.Core
+ServiceLocator.SetLocatorProvider(app.Services);
 ```
 
 #### 4. Use the Mapping
@@ -78,6 +83,11 @@ builder.Services.AddMehranSmartMap(opt =>
 {
     opt.ScanAssemblies = new[] { typeof(UserMap).Assembly };
 });
+
+var app = builder.Build();
+
+// for MehranSmartMap.Core
+ServiceLocator.SetLocatorProvider(app.Services);
 ```
 
 #### ۴. استفاده از مپ:
@@ -120,6 +130,11 @@ builder.Services.AddMehranSmartMap(opt =>
 {
     opt.ScanAssemblies = new[] { typeof(UserMap).Assembly };
 });
+
+var app = builder.Build();
+
+// for MehranSmartMap.Core
+ServiceLocator.SetLocatorProvider(app.Services);
 ```
 
 #### ٤. استخدام الخرائط:
