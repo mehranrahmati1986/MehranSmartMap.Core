@@ -4,6 +4,17 @@ A lightweight package for automatic AutoMapper profile discovery and mapping reg
 
 ---
 
+---
+
+## ✅ Features
+
+- Auto-registers all mapping classes implementing `IMapDefinition`
+- Reverse mapping support
+- Clean and maintainable
+- Easy to test and extend
+
+---
+
 ## 🌐 English
 
 ### 🔧 Installation & Configuration
@@ -143,15 +154,6 @@ var entity = dto.ToEntity<User>();
 var dto = entity.ToDto<UserDto>();
 ```
 
----
 
-## ✅ Features
-
-- Auto-registers all mapping classes implementing `IMapDefinition`
-- Reverse mapping support
-- Clean and maintainable
-- Easy to test and extend
-
----
 
 Made with ❤️ by Mehran Ghaederahmat
