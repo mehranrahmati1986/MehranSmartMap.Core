@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MehranSmartMap.Core.BaseMap;
 using MehranSmartMap.Core.Infrastructure;
 using System.Reflection;
 
@@ -16,7 +17,9 @@ public class AutoDiscoveryProfile : Profile
             IEnumerable<Type> types = assembly
                 .GetTypes()
                 .Where(t => typeof(IMapDefinition).IsAssignableFrom(t))
-                .Where(t => !t.IsAbstract && !t.IsInterface);
+                .Where(t => !t.IsAbstract && !t.IsInterface)
+                .Where(t=> t.BaseType?.IsGenericType == true)
+                .Where(t=> t.BaseType.GetGenericTypeDefinition() == typeof(BaseMap<,>));
 
             foreach (var type in types)
             {
