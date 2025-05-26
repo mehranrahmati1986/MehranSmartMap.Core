@@ -1,19 +1,159 @@
-# MehranSmartMap.Core
+# MehranSmartMap
 
-یک فریم‌ورک ساده و هوشمند برای مپینگ داده‌ها است که از 
-AutoMapper 
-استفاده می‌کند. با استفاده از این فریم‌ورک، شما می‌توانید به راحتی بین DTOها و Entityها تبدیل ایجاد کنید.
+A lightweight package for automatic AutoMapper profile discovery and mapping registration in ASP.NET Core. It allows you to define mapping logic in isolated classes and register everything automatically.
 
-## ویژگی‌ها
+---
 
-- استفاده از **AutoMapper** به‌صورت جنریک و هوشمند.
-- حذف نیاز به تعریف کلاس Profile برای هر DTO و Entity.
-- پشتیبانی از چندین نسخه از دات‌نت (مثل `net8.0` و `net9.0`).
+---
 
-## نصب
+## ✅ Features
 
-برای نصب این پکیج، می‌توانید از NuGet استفاده کنید:
+- Auto-registers all mapping classes implementing `IMapDefinition`
+- Reverse mapping support
+- Clean and maintainable
+- Easy to test and extend
 
+---
+
+## 🌐 English
+
+### 🔧 Installation & Configuration
+
+#### 1. Install Package
 
 ```bash
-dotnet add package MehranSmartMap.Core
+dotnet add package MehranSmartMap
+```
+
+#### 2. Define Your Mapping Class
+
+```csharp
+public class UserMap : BaseMap<UserDto, User>
+{
+    protected override bool EnableReverseMap => true;
+
+    public override void CustomMappings(IMappingExpression<UserDto, User> mapping, IMappingExpression<User, UserDto> reverseMap)
+    {
+        mapping.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName));
+    }
+}
+```
+
+#### 3. Register It in Program.cs / Startup.cs
+
+```csharp
+builder.Services.AddMehranSmartMap(opt =>
+{
+    opt.ScanAssemblies = new[] { typeof(UserMap).Assembly };
+});
+
+var app = builder.Build();
+
+// for MehranSmartMap.Core
+ServiceLocator.SetLocatorProvider(app.Services);
+```
+
+#### 4. Use the Mapping
+
+```csharp
+var entity = dto.ToEntity<User>();
+var dto = entity.ToDto<UserDto>();
+```
+
+---
+
+## 🇮🇷 فارسی
+
+### 📦 نصب و پیکربندی
+
+#### ۱. نصب پکیج:
+
+```bash
+dotnet add package MehranSmartMap
+```
+
+#### ۲. تعریف نگاشت:
+
+```csharp
+public class UserMap : BaseMap<UserDto, User>
+{
+    protected override bool EnableReverseMap => true;
+
+    public override void CustomMappings(IMappingExpression<UserDto, User> mapping, IMappingExpression<User, UserDto> reverseMap)
+    {
+        mapping.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName));
+    }
+}
+```
+
+#### ۳. ثبت در برنامه:
+
+```csharp
+builder.Services.AddMehranSmartMap(opt =>
+{
+    opt.ScanAssemblies = new[] { typeof(UserMap).Assembly };
+});
+
+var app = builder.Build();
+
+// for MehranSmartMap.Core
+ServiceLocator.SetLocatorProvider(app.Services);
+```
+
+#### ۴. استفاده از مپ:
+
+```csharp
+var entity = dto.ToEntity<User>();
+var dto = entity.ToDto<UserDto>();
+```
+
+---
+
+## 🇸🇦 العربية
+
+### ⚙️ التثبيت والتكوين
+
+#### ١. تثبيت الحزمة:
+
+```bash
+dotnet add package MehranSmartMap
+```
+
+#### ٢. تعريف التحويل:
+
+```csharp
+public class UserMap : BaseMap<UserDto, User>
+{
+    protected override bool EnableReverseMap => true;
+
+    public override void CustomMappings(IMappingExpression<UserDto, User> mapping, IMappingExpression<User, UserDto> reverseMap)
+    {
+        mapping.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName));
+    }
+}
+```
+
+#### ٣. تسجيل الحزمة:
+
+```csharp
+builder.Services.AddMehranSmartMap(opt =>
+{
+    opt.ScanAssemblies = new[] { typeof(UserMap).Assembly };
+});
+
+var app = builder.Build();
+
+// for MehranSmartMap.Core
+ServiceLocator.SetLocatorProvider(app.Services);
+```
+
+#### ٤. استخدام الخرائط:
+
+```csharp
+var entity = dto.ToEntity<User>();
+var dto = entity.ToDto<UserDto>();
+```
+
+
+
+Made with ❤️ by Mehran Ghaederahmat
